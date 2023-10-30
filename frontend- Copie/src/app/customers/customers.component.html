@@ -1,0 +1,20 @@
+<div class="container p-5">
+    <table class="table" *ngIf="customers">
+      <thead>
+      <tr>
+        <th>alletId</th> <th>balance</th> <th>currencey</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of customers._embedded.wallets">
+          <td>{{p.walletId}}</td>
+          <td>{{p.balance}}</td>
+          <td>{{p.currency}}</td>
+          <td>
+            <button class="btn btn-success" (click)="getClien(p)">get his client</button>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div> 

@@ -1,0 +1,20 @@
+./consul.exe agent -server -bootstrap-expect=1 -data-dir=consul-data -ui -bind='192.168.1.109'
+
+------------> consulter ce site our voir vote discovery service(http://localhost:8500/ui/dc1/services)
+
+----------->POST http://localhost:8081/actuator/refresh
+
+----------> http://localhost:9999/inventory-service/products?projection=fullProduct (Dans le cas des projections)
+
+----------> http://localhost:9999/customer-service/customers/1
+
+--------> http://localhost:9999/customer-service/customers/1?projection=fullCustomer
+
+-------->Pour Vault (./vault.exe server -dev)
+
+------------------------------ Vault Client Part(usgin cmd client)--------------------------------------
+
+-->set VAULT_ADDR=http://127.0.0.1:8200
+---->vault kv put secret/billing-service user.username=hamza user.password=hamza
+--->vault kv get secret/billing-service
+----> when we change somehting in vault we should call actuator {POST http://localhost:8084/actuator/refresh}
